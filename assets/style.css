@@ -289,13 +289,47 @@ img {
 
 /* ================================= categories section starts============================== */
 
-.category .card {
-  height: 250px;
+.category .category_title {
+  color: #8c8c8c;
 }
 
-.category i {
-  color: #7f8487 !important;
-  font-size: 6.2rem !important;
+.category .category-card {
+  border-radius: 1.2rem; 
+  /* border-color: #292929 !important;  */
+  border-color: #8c8c8c !important; 
+  width: 17rem; 
+  height: 12.4rem; 
+  box-shadow:  21px 21px 42px #0d0e0f, -21px -21px 42px #333439;
+  background: #202124;
+}
+
+.category .category-card:hover {
+  border-color: #292929 !important;
+}
+
+.category .category-card i {
+  font-size: 3.4rem !important; 
+  color: #8c8c8c !important;
+}
+
+.category .category-card h5 {
+  color: #8c8c8c !important;
+}
+
+/* Category Hover */
+.category-focus {
+  transition: ease-in-out 0.5s;
+}
+
+.category-focus:hover {
+  transform: scale(1.08);
+}
+
+@media screen and (max-width: 992px) {
+  .category .category-card {
+    width: 14rem; 
+    height: 12rem; 
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -307,24 +341,29 @@ img {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
   }
-  .category .col-3 {
+  /* .category .col-3 {
     width: 100% !important;
     margin-bottom: 20px !important;
+  } */
+
+  .category .category-card {
+    width: 14rem; 
+    height: 10rem; 
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .category .category_title {
     font-size: 1.1rem !important;
-  }
-
-  .category .card {
-    height: 150px !important;
   }
 
   .category .row {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
+  }
+  .category .category-card {
+    width: 12rem; 
+    height: 10rem; 
   }
   .category i {
     font-size: 2.2rem !important;
@@ -332,6 +371,13 @@ img {
 
   .category .card-title {
     font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .category .category-card {
+    width: 8rem; 
+    height: 10rem; 
   }
 }
 
@@ -418,18 +464,7 @@ img {
   height: 21px !important;
 }
 
-/* Category Hover */
-.category-focus {
-  transition: ease-in-out 0.5s;
-}
 
-.category-focus i {
-  color: #2e2e2e !important;
-}
-
-.category-focus:hover {
-  transform: scale(1.08);
-}
 
 /* instructor page style */
 
