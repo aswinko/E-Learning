@@ -94,6 +94,27 @@ function show_courses_category($id) {
     return $result;
 }
 
+
+function show_instructor(){
+    global $conn;
+
+    $query = "SELECT * FROM instructor ORDER BY id";
+
+    $res = mysqli_query($conn, $query);
+
+    return $res;
+}
+
+function show_user(){
+    global $conn;
+
+    $query = "SELECT * FROM user ORDER BY id";
+
+    $res = mysqli_query($conn, $query);
+
+    return $res;
+}
+
 //fetch instructor details 
 function instructor_details($instructor_email) {
     global $conn;
@@ -308,6 +329,8 @@ function update_courses(
 
     return $result_query;
 }
+
+
 
 function login($username, $password) {
 

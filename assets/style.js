@@ -23,3 +23,15 @@ function toggleMenuUser() {
     toggle_user.classList.toggle('active');
 
 }
+
+function toggleMenuAdmin() {
+    let navigation_admin = document.querySelector('.navigation-user');
+    let toggle_admin = document.querySelector('.toggle');
+    
+    //prevent default submission
+    // preventDefault();
+    
+    navigation_admin.classList.toggle('active');
+    toggle_admin.classList.toggle('active');
+
+}

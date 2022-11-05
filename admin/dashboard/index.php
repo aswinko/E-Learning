@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['admin_username'])){
+        header("Location: ../login.php"); 
+    }
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,8 +24,9 @@
     </head>
 
     <body>
+    <?php include('./sidebar.php'); ?>
 
-
+    
 
         
     <!-- ===========link bootstrap============= -->

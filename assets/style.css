@@ -542,11 +542,11 @@ img {
   font-weight: 700;
 }
 
-
-.navigation ul li a:hover{
+.navigation ul li a:hover, .active-sidebar-instructor{
   background: #ea1d63;
 } 
-.navigation-user ul li a:hover {
+
+.navigation-user ul li a:hover, .active-sidebar-user {
   background: #DC5F00;
 }
 
@@ -681,4 +681,30 @@ img {
 .profile-round input[type="file"]::-webkit-file-upload-button {
   cursor: pointer;
 
+}
+
+/* =============== admin area ====================== */
+.admin-container {
+  padding: 0 10rem !important;
+}
+
+@media screen and (max-width: 992px) {
+  .admin-container {
+    padding: 0 2rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .admin-container {
+    padding: 0 1rem !important;
+  }
+  .admin-container img {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+  }
+  .admin-container .row {
+    font-size: 10px !important;
+    font-weight: 600;
+  }
 }

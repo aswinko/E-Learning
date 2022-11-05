@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['instructor_email'])){
+    if(!isset($_SESSION['admin_username'])){
         header("Location: ../login.php"); 
     }
 
@@ -10,6 +10,26 @@
     
     $show_category = show_category();
     $category = mysqli_fetch_all($show_category, MYSQLI_ASSOC);
+
+    // $instructor_email = $_SESSION['instructor_email']; 
+    if(isset($_GET['edit'])) {
+        $edit_id = mysqli_real_escape_string($conn, $_GET['edit']);
+        $edit_sql = "SELECT * FROM courses WHERE course_id = '$edit_id'";
+        $edit_result = mysqli_query($conn, $edit_sql);
+        $placeholder_row = mysqli_fetch_assoc($edit_result);
+
+        $category_id = $placeholder_row['category_id'];
+
+        //fetching category name
+        $select_category = "SELECT * FROM category WHERE category_id = '$category_id'";
+        $category_result = mysqli_query($conn, $select_category);
+        $category_row = mysqli_fetch_assoc($category_result);
+        $category_name_placeholder = $category_row['category_name'];
+        $category_id_placeholder = $category_row['category_id'];
+    }else {
+        header("Location: ./manage_course.php");
+    }
+    // echo $placeholder_row['thumbnail'];
     
     
 if(isset($_POST['submit'])){
@@ -24,6 +44,9 @@ if(isset($_POST['submit'])){
     
     //access image
     $thumbnail = $_FILES['thumbnail']['name']; 
+
+    //get old thumbnail
+    $old_thumbnail = $_POST['old_thumbnail'];
     //access image temp name
     $temp_thumbnail = $_FILES['thumbnail']['tmp_name']; 
 
@@ -96,12 +119,12 @@ if(isset($_POST['submit'])){
         // else
         //  {}
             //  print_r($vid1);
-            insert_courses($temp_thumbnail, $thumbnail, $course_title, 
-            $author_name,
-            // $course_rating,
-             $course_price, $course_description, $course_keywords, $course_category, 
+            update_courses($temp_thumbnail, $thumbnail, $old_thumbnail, $course_title, $author_name,
+            $course_price, $course_description, $course_keywords, $course_category, 
             $course_status, $lecture1, $lecture2, $lecture3, $lecture4, $lecture5, $lecture6, $temp_lecture1, 
-            $temp_lecture2, $temp_lecture3, $temp_lecture4, $temp_lecture5, $temp_lecture6);
+            $temp_lecture2, $temp_lecture3, $temp_lecture4, $temp_lecture5, $temp_lecture6, $edit_id);
+           
+            header("Location: ./manage_course.php");
          
     }
 
@@ -132,66 +155,73 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body >
-
-
-    <!-- =====================sidebar===================== -->
-    <?php include('./sidebar.php'); ?>
-    <!-- ====================sidebar ends================= -->
-
+<body>
+        <div class="container-fluid shadow-sm">
+            <ul class="m-0 p-3">
+                <li class="text-end"><a href="javascript:history.go(-1)"><i class="fa-solid fa-xmark text-dark fs-2 fw-bold"></i></a></li>
+            </ul>
+        </div>
     <div class="container d-flex justify-content-center mt-5">
         <!-- <div class="row">
             <div class="col-12">
                 <h2>Edit your Course</h2>
             </div>
         </div> -->
-        <div class="row mb-4 shadow">
-            <div class="col-12 ps-5 p-2" style="background: #F6F6F6;">
-                <h2 class="text-start">Create your Course</h2>
+        <div class="row shadow">
+            <div class="col-12 ps-5 p-2" styl="background: #F6F6F6;">
+                <h2>Edit your Course</h2>
                 <form class="w-auto" action="" method="post" enctype="multipart/form-data">
-                    <div class="my-3 w-75 fw-bold ps-5">
+                    <div class="my-3 w-75 fw-bold ps-4">
                         <label for="exampleFormControlInput1" class="form-label">Course Title</label>
-                        <input name="course_title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="course title">
+                        <input name="course_title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="course title" value="<?php echo htmlspecialchars($placeholder_row['title']); ?>">
                     </div>
-                    <div class="row w-75 fw-bold ps-5">
-                        
+                    <div class="row w-75 fw-bold ps-4">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput4" class="form-label">Course Price(Rupees)</label>
-                                <input name="course_price" type="text" class="form-control" id="exampleFormControlInput4" placeholder="course price">
+                                <input name="course_price" type="text" class="form-control" id="exampleFormControlInput4" placeholder="course price" value="<?php echo htmlspecialchars($placeholder_row['price']); ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3 fw-bold">
                                 <label for="category" class="form-label">Choose a Category</label>
                                 <select name="course_category" id="category" class="course_category form-select">
-                                    <option value="">Select a Category</option>
                                     <?php if($category): ?>
+                                        <option value="">Select a Category</option>
                                         <?php foreach($category as $categories): ?>
-                                            <option value="<?php echo htmlspecialchars($categories['category_id']); ?>"><?php echo htmlspecialchars($categories['category_name']); ?></option>
+                                            <option value="<?php echo htmlspecialchars($categories['category_id']); ?>" <?=$category_id_placeholder == $categories['category_id'] ? 'selected' : '' ?> ><?php echo htmlspecialchars($categories['category_name']); ?></option>
                                         <?php endforeach; ?>
                                     <?php else: ?>
-                                        
+                                        <option value="">no categories</option>
                                     <?php endif; ?>
                                 </select>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mb-3 w-75 fw-bold ps-5">
+                    <div class="mb-3 w-75 fw-bold ps-4">
                         <label for="exampleFormControlInput5" class="form-label">Course Keywords</label>
-                        <input name="course_keywords" type="text" class="form-control" id="exampleFormControlInput5" placeholder="course keywords">
+                        <input name="course_keywords" type="text" class="form-control" id="exampleFormControlInput5" placeholder="course keywords" value="<?php echo htmlspecialchars($placeholder_row['course_keywords']); ?>">
                     </div>
-                    <div class="mb-3 w-75 fw-bold ps-5">
+                    <div class="mb-3 w-75 fw-bold ps-4">
                         <label for="formFile" class="form-label">Upload your Course Thumbnail</label>
-                        <input name="thumbnail" class="form-control" type="file" id="formFile">
+                        <div class="row">
+                            <div class="col-10 d-flex align-items-center">
+                                <input name="old_thumbnail" class="form-control" type="hidden" id="formFile" value="<?php echo htmlspecialchars($placeholder_row['thumbnail']); ?>">
+                                <input name="thumbnail" class="form-control" type="file" id="formFile">
+                                <span class="fs-6 fw-normal ps-1" value="<?php echo htmlspecialchars($placeholder_row['thumbnail']); ?>"><?php echo htmlspecialchars($placeholder_row['thumbnail']); ?></span>
+                            </div>
+                            <div class="col-2">
+                                <img style="width: 100px !important; height: 60px;" class="w-25" src="../../admin/course_resourses/<?php echo htmlspecialchars($placeholder_row['thumbnail']); ?>" alt="...">
+                            </div>
+                        </div>
                     </div>
-                    <div class="row w-75 ps-5">
+                    <div class="row w-75 ps-4">
                         <label class="form-label fw-bold">Upload 6 lectures <span class="fw-normal">(support only .mp4)</span> </label>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lecture1" class="form-label">Lecture 1</label>
-                                <input name="lecture1" class="form-control" type="file" id="lecture1">
+                                <input name="lecture1" class="form-control" type="file" id="lecture1" <?php echo htmlspecialchars($placeholder_row['lecture1']); ?>>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -201,7 +231,7 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
-                    <div class="row w-75 ps-5">
+                    <div class="row w-75 ps-4">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lecture3" class="form-label">Lecture 3</label>
@@ -215,7 +245,7 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
-                    <div class="row w-75 ps-5">
+                    <div class="row w-75 ps-4">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lecture5" class="form-label">Lecture 5</label>
@@ -229,49 +259,36 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3 w-75 fw-bold ps-5">
+                    <div class="mb-3 w-75 fw-bold ps-4">
                         <label for="exampleFormControlTextarea1" class="form-label">Course Description</label>
-                        <textarea name="course_description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea name="course_description" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo htmlspecialchars($placeholder_row['title']); ?></textarea>
                     </div>
-                    <div class="mb-3 ps-5">
-                        <button type="submit" name="submit" class="btn text-white px-5 py-2 fw-bold" style="background-color: #DD5353;">SUBMIT</button>
+                    <div class="mb-3 ps-4">
+                        <button type="submit" name="submit" class="btn btn-dark px-5 py-2 fw-bold">UPDATE</button>
                     </div>
                 </form>
             </div>
-        </div>
+        </div>        
     </div>
 
+<!-- ==================== sweet alert =============================  -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php 
+    if(isset($_SESSION['status']) && $_SESSION['status'] != ''){
+?>
+    <script>
+        swal({
+            title: "<?php echo htmlspecialchars($_SESSION['status']); ?>",
+            // text: "",
+            icon: "<?php echo htmlspecialchars($_SESSION['status_code']); ?>",
+            button: "Done",
+    });
+    </script>
+<?php
+        unset($_SESSION['status']);
+    }
 
-    <!-- Compiled and minified JavaScript -->
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
-
-    
-    <!-- ===========link bootstrap============= -->
-    <script src="../../assets/js/bootstrap.js" type="text/javascript"></script>
-    
-    <script src="../../assets/style.js" type="text/javascript"></script>
-
-    <!-- ==================== sweet alert =============================  -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <?php 
-        if(isset($_SESSION['status']) && $_SESSION['status'] != ''){
-    ?>
-        <script>
-            swal({
-                title: "<?php echo htmlspecialchars($_SESSION['status']); ?>",
-                // text: "",
-                icon: "<?php echo htmlspecialchars($_SESSION['status_code']); ?>",
-                button: "Done",
-        });
-        </script>
-    <?php
-            unset($_SESSION['status']);
-        }
-
-    ?>
+?>
 
 
 </body>

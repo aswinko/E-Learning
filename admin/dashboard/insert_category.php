@@ -1,7 +1,7 @@
 <?php
 
-include("../config/db_connect.php");
-include("../config/functions.php");
+include("../../config/db_connect.php");
+include("../../config/functions.php");
 
 if(isset($_POST['submit'])){
     $category_name = $_POST['category_name'];
@@ -19,14 +19,14 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-     <!-- ==================Link bootstrap ================== -->
-     <link rel="stylesheet" href="../assets/css/bootstrap.css">
+     <?php include('./links.inc.php'); ?>
 </head>
 <body>
-    <div class="container">
-        <h2>Insert Category</h2>
-        <div class="row">
-            <form action="" method="post">
+    <?php include('./sidebar.php'); ?>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="row border shadow-sm p-5">
+            <h2>Insert Category</h2>
+            <form action="" method="post" class="">
                 <div class="my-3">
                     <label class="form-label">Category Name</label>
                     <input type="text" name="category_name" class="form-control" placeholder="Category name" required>
@@ -42,23 +42,7 @@ if(isset($_POST['submit'])){
             </form>
         </div>
     </div>
-    <!-- ==================== sweet alert =============================  -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<?php 
-    if(isset($_SESSION['status']) && $_SESSION['status'] != ''){
-?>
-    <script>
-        swal({
-            title: "<?php echo htmlspecialchars($_SESSION['status']); ?>",
-            // text: "",
-            icon: "<?php echo htmlspecialchars($_SESSION['status_code']); ?>",
-            button: "Done",
-    });
-    </script>
-<?php
-        unset($_SESSION['status']);
-    }
-
-?>
+   
+    <?php include('./footer.inc.php'); ?>
 </body>
 </html>

@@ -34,7 +34,7 @@
         // $fetch_profile = mysqli_fetch_assoc($update_res);
 
     }
-
+    
 
 ?>
 
