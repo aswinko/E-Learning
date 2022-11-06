@@ -64,7 +64,7 @@ $course = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             
                             <a href="../../course_details.php?course_id=<?php echo htmlspecialchars($row['course_id']); ?>&course_title=<?php echo htmlspecialchars($row['title']); ?>" class="text-dark">
                                 <div class="card pb-4" style="width: 18rem; height: 15rem;">
-                                    <img src="../../admin/course_resourses/<?php echo htmlspecialchars($row['thumbnail']); ?>" class="card-img-top" alt="...">
+                                    <img src="../../admin/course_resourses/thumbnail/<?php echo htmlspecialchars($row['thumbnail']); ?>" class="card-img-top" alt="...">
                                     <div class="card-body p-2">
                                         <p class="card-text title fs- fw-bold pt-1 lh-sm w-100" style="font-size: .9rem;"><?php echo htmlspecialchars($row['title']); ?></p>
                                         <!-- <p class="card-text author fs-6 fw-normal pt-1 lh-sm" style="width: 90%"><?php //echo htmlspecialchars($row['author']); ?></p>

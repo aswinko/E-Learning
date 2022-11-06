@@ -47,7 +47,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <img class="rounded-circle" src="../assets/img/ammu.jpg" alt="" style="width: 200px; height: 200px;">
+                        <img class="rounded-circle" src="../admin/course_resourses/profile_img/instructor/<?php echo htmlspecialchars($instructor_details['profile_img']); ?>" alt="" style="width: 200px; height: 200px; object-fit: cover;">
                         
                     </div>
                     <div class="col-md-6 mt-5">
@@ -71,7 +71,7 @@
                                 <div class="col-md-6 col-6">
                                     <a href="../course_details.php?course_id=<?php echo htmlspecialchars($row['course_id']); ?>&course_title=<?php echo htmlspecialchars($row['title']); ?>" class="text-dark">
                                         <div class=" pb-4" style="width: 18rem; height: 18rem;">
-                                            <img src="../admin/course_resourses/<?php echo htmlspecialchars($row['thumbnail']); ?>" class="card-img-top" alt="..." style="height: 10rem;">
+                                            <img src="../admin/course_resourses/thumbnail/<?php echo htmlspecialchars($row['thumbnail']); ?>" class="card-img-top" alt="..." style="height: 10rem;">
                                             <div class="card-body p-1">
                                                 <p class="card-text title fs- fw-bold pt-1 lh-sm w-100" style="font-size: .9rem;"><?php echo htmlspecialchars($row['title']); ?></p>
                                                 <p class="card-text author fs-6 fw-normal pt-1 lh-sm" style="width: 90%"><?php echo htmlspecialchars($row['author']); ?></p>

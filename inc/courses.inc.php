@@ -34,7 +34,7 @@
                             <?php foreach($courses_normal as $course): ?>
                                 <div class="carousel-cell">
                                     <a href="course_details.php?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&course_title=<?php echo htmlspecialchars($course['title']); ?>" class="text-dark">
-                                        <img class="thumbnail" src="./admin/course_resourses/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="....">
+                                        <img class="thumbnail" src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="....">
                                         <p class="title fw-bold pt-2" style="line-height: 1.1;"><?php echo htmlspecialchars($course['title']); ?></h4>
                                         <p class="author fw-normal pt-1"><?php echo htmlspecialchars($course['author']); ?></p>
                                         <!-- <p class="rating fw-light"><?php //echo htmlspecialchars($course['rating']); ?> ⭐ <span>rating</span></p> -->
@@ -58,7 +58,7 @@
                             <?php foreach($courses_random as $course): ?>
                                 <div class="carousel-cell">
                                     <a href="course_details.php?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&course_title=<?php echo htmlspecialchars($course['title']); ?>" class="text-dark">
-                                        <img class="thumbnail" src="./admin/course_resourses/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="....">
+                                        <img class="thumbnail" src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="....">
                                         <p class="title fw-bold pt-1" style="line-height: 1.1;"><?php echo htmlspecialchars($course['title']); ?></h4>
                                         <p class="author fw-normal"><?php echo htmlspecialchars($course['author']); ?></p>
                                         <!-- <p class="rating fw-light"><?php //echo htmlspecialchars($course['rating']); ?> ⭐ <span>rating</span></p> -->

@@ -34,7 +34,7 @@
                 <div class="row mb-2 py-2 border shadow-sm d-flex flex-row text-center align-items-center rounded-3">
                     <div class="col-2"><?php echo htmlspecialchars($user['id']); ?></div>
                     <div class="col-2 p-2">
-                        <img src="<?php $user['profile_img'] != null ? print '../course_resourses/'. $user['profile_img'] : print '../../assets/img/user2.png' ?>" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <img src="<?php $user['profile_img'] != null ? print '../course_resourses/profile_img/user/'. $user['profile_img'] : print '../../assets/img/user2.png' ?>" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     </div>
                     <div class="col-2"><?php echo htmlspecialchars($user['fullname']); ?></div>
                     <div class="col-3 px-0"><?php echo htmlspecialchars($user['email']); ?></div>

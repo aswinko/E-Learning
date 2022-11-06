@@ -708,3 +708,26 @@ img {
     font-weight: 600;
   }
 }
+
+
+/* ====== admin course ===== */
+.manage-course .card {
+  width: 17rem; 
+  height: auto;
+}
+
+
+@media screen and (max-width: 992px) {
+  .manage-course .card {
+    width: 14rem;
+    margin-left: 2rem;
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+  .manage-course .card {
+    display: flex;
+    margin: auto;
+  }
+}

@@ -40,9 +40,9 @@ mysqli_close($conn);
 
                 </div>
                 <?php foreach($courses as $course): ?>
-                    <div class="row pt-2">
+                    <div class="row py-2">
                         <div class="col-4 image-container" style="max-width: 18rem;">
-                            <img src="./admin/course_resourses/<?php echo htmlspecialchars($course['thumbnail']); ?>" class="img-fluid rounded-start" alt="..." style="width: 640px; height: 9rem;">
+                            <img src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" class="img-fluid rounded-start" alt="..." style="width: 640px; height: 9rem;">
                         </div>
                         <div class="col-8">
                             <div class="card-body p-2 m-0">

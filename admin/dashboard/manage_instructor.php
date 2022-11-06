@@ -37,7 +37,7 @@
                 <div class="row mb-2 py-2 border shadow-sm d-flex flex-row text-center align-items-center rounded-3">
                     <div class="col-1 col-md-2"><?php echo htmlspecialchars($instructor['id']); ?></div>
                     <div class="col-2 p-2">
-                        <img src="<?php $instructor['profile_img'] != null ? print '../course_resourses/'. $instructor['profile_img'] : print '../../assets/img/user3.png' ?>" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <img src="<?php $instructor['profile_img'] != null ? print '../course_resourses/profile_img/instructor/'. $instructor['profile_img'] : print '../../assets/img/user3.png' ?>" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     </div>
                     <div class="col-2"><?php echo htmlspecialchars($instructor['name']); ?></div>
                     <div class="col-3 px-0"><?php echo htmlspecialchars($instructor['email']); ?></div>

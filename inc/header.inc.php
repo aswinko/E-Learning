@@ -116,7 +116,7 @@
                 <div class="dropdown nav-field ">
                   <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <!-- <i class="bi bi-person-circle text-dark fs-4"></i>  -->
-                    <img class="rounded-circle" src="<?php $profile_img !== null ? print './admin/course_resourses/' . $profile_img : print './assets/img/user.png' ?>" alt="..." style="width: 45px; height: 45px; object-fit: cover;" >
+                    <img class="rounded-circle" src="<?php $profile_img !== null ? print './admin/course_resourses/profile_img/user/' . $profile_img : print './assets/img/user.png' ?>" alt="..." style="width: 45px; height: 45px; object-fit: cover;" >
                     Profile
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-md-start">

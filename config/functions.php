@@ -208,15 +208,15 @@ function insert_courses(
     // move_uploaded_file($temp_thumbnail, "./course_resourses/'$thumbnail'");
 
     //image upload
-    $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\" . $thumbnail);
+    $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\thumbnail\\" . $thumbnail);
 
     //lecture upload
-    $lecture_1 = move_uploaded_file($temp_lecture1, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture1);
-    $lecture_2 = move_uploaded_file($temp_lecture2, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture2);
-    $lecture_3 = move_uploaded_file($temp_lecture3, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture3);
-    $lecture_4 = move_uploaded_file($temp_lecture4, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture4);
-    $lecture_5 = move_uploaded_file($temp_lecture5, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture5);
-    $lecture_6 = move_uploaded_file($temp_lecture6, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture6);
+    $lecture_1 = move_uploaded_file($temp_lecture1, "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $lecture1);
+    $lecture_2 = move_uploaded_file($temp_lecture2, "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $lecture2);
+    $lecture_3 = move_uploaded_file($temp_lecture3, "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $lecture3);
+    $lecture_4 = move_uploaded_file($temp_lecture4, "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $lecture4);
+    $lecture_5 = move_uploaded_file($temp_lecture5, "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $lecture5);
+    $lecture_6 = move_uploaded_file($temp_lecture6, "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $lecture6);
     if ($img_thumb or $lecture_1 or $lecture_2 or $lecture_3 or 
         $lecture_4 or $lecture_4 or $lecture_5 or $lecture_6) {
         // echo 'File uploaded successfully';
@@ -251,12 +251,12 @@ function insert_courses(
     return $result_query;
 }
 
+
 function update_courses(
     $temp_thumbnail,
-    $thumbnail,
-    $old_thumbnail,
     $course_title,
-    $author_name,
+    $old_thumbnail,
+    $update_thumbnail,
     $course_price,
     $course_description,
     $course_keywords,
@@ -268,6 +268,18 @@ function update_courses(
     $lecture4, 
     $lecture5, 
     $lecture6,
+    $update_lecture1,
+    $update_lecture2,
+    $update_lecture3,
+    $update_lecture4,
+    $update_lecture5,
+    $update_lecture6,
+    $old_lecture1,
+    $old_lecture2,
+    $old_lecture3,
+    $old_lecture4,
+    $old_lecture5, 
+    $old_lecture6,
     $temp_lecture1,
     $temp_lecture2, 
     $temp_lecture3, 
@@ -278,44 +290,91 @@ function update_courses(
 ) {
     global $conn;
     // echo $author_name;
-    $instructor_email = $_SESSION['instructor_email'];
-    $sql = "SELECT instructor_email FROM courses WHERE user_name = '$instructor_email'";
-    $result_query = mysqli_query($conn, $sql);
+    // $instructor_email = $_SESSION['instructor_email'];
+    // $sql = "SELECT instructor_email FROM courses WHERE user_name = '$instructor_email'";
+    // $result_query = mysqli_query($conn, $sql);
 
     $course_rating = "";
     // move_uploaded_file($temp_thumbnail, "./course_resourses/'$thumbnail'");
 
     //image upload
-    $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\" . $thumbnail);
+    // $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\" . $update_filename);
 
     //old imgae
     // $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\" . $old_thumbnail);
 
     //lecture upload
-    $lecture_1 = move_uploaded_file($temp_lecture1, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture1);
-    $lecture_2 = move_uploaded_file($temp_lecture2, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture2);
-    $lecture_3 = move_uploaded_file($temp_lecture3, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture3);
-    $lecture_4 = move_uploaded_file($temp_lecture4, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture4);
-    $lecture_5 = move_uploaded_file($temp_lecture5, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture5);
-    $lecture_6 = move_uploaded_file($temp_lecture6, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture6);
-    if ($img_thumb or $lecture_1 or $lecture_2 or $lecture_3 or 
-        $lecture_4 or $lecture_4 or $lecture_5 or $lecture_6) {
-        // echo 'File uploaded successfully';
-    } else {
-        // $thumbnail = $old_thumbnail;
-        // $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\" . $old_thumbnail);
-        // $_SESSION['status'] = "You should select a file to upload !!";
-        // $_SESSION['status_code'] = "error";
-        // echo 'You should select a file to upload !!';
-    }
+    // $lecture_1 = move_uploaded_file($temp_lecture1, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture1);
+    // $lecture_2 = move_uploaded_file($temp_lecture2, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture2);
+    // $lecture_3 = move_uploaded_file($temp_lecture3, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture3);
+    // $lecture_4 = move_uploaded_file($temp_lecture4, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture4);
+    // $lecture_5 = move_uploaded_file($temp_lecture5, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture5);
+    // $lecture_6 = move_uploaded_file($temp_lecture6, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture6);
+    // if ($img_thumb or $lecture_1 or $lecture_2 or $lecture_3 or 
+    //     $lecture_4 or $lecture_4 or $lecture_5 or $lecture_6) {
+    //     // echo 'File uploaded successfully';
+    // } else {
+    //     // $thumbnail = $old_thumbnail;
+    //     // $img_thumb = move_uploaded_file($temp_thumbnail, "C:\wamp64\www\Learning\admin\course_resourses\\" . $old_thumbnail);
+    //     // $_SESSION['status'] = "You should select a file to upload !!";
+    //     // $_SESSION['status_code'] = "error";
+    //     // echo 'You should select a file to upload !!';
+    // }
 
     //insert query
     $update_course = "UPDATE `courses` SET category_id='$course_category', title='$course_title', price='$course_price',
-                        description='$course_description', course_keywords='$course_keywords', thumbnail='$thumbnail', lecture1='$lecture1',
-                        lecture2='$lecture2', lecture3='$lecture3', lecture4='$lecture4', lecture5='$lecture5', lecture6='$lecture6', date=NOW() WHERE course_id='$course_id'";
+                        description='$course_description', course_keywords='$course_keywords', thumbnail='$update_thumbnail', lecture1='$update_lecture1',
+                        lecture2='$update_lecture2', lecture3='$update_lecture3', lecture4='$update_lecture4', lecture5='$update_lecture5', lecture6='$update_lecture6', date=NOW() WHERE course_id='$course_id'";
 
     $result_query = mysqli_query($conn, $update_course);
     if ($result_query) {
+        if($_FILES['thumbnail']['name'] != ''){
+            //image upload
+            move_uploaded_file($_FILES['thumbnail']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\\thumbnail\\" . $_FILES['thumbnail']['name']);
+
+            // move_uploaded_file($temp_lecture1, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture1);
+            // move_uploaded_file($temp_lecture2, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture2);
+            // move_uploaded_file($temp_lecture3, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture3);
+            // move_uploaded_file($temp_lecture4, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture4);
+            // move_uploaded_file($temp_lecture5, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture5);
+            // move_uploaded_file($temp_lecture6, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture6);
+            
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\\thumbnail\\" . $old_thumbnail);
+
+            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture1);
+            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture2);
+            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture3);
+            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture4);
+            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture5);
+            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture6);
+
+        }
+
+        if ($_FILES['lecture1']['name'] != ''){
+            move_uploaded_file($_FILES['lecture1']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $_FILES['lecture1']['name']);
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $old_lecture1);
+        }
+        if ($_FILES['lecture2']['name'] != ''){
+            move_uploaded_file($_FILES['lecture2']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $_FILES['lecture2']['name']);
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $old_lecture2);
+        }
+        if ($_FILES['lecture3']['name'] != ''){
+            move_uploaded_file($_FILES['lecture3']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $_FILES['lecture3']['name']);
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $old_lecture3);
+        }
+        if ($_FILES['lecture4']['name'] != ''){
+            move_uploaded_file($_FILES['lecture4']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $_FILES['lecture4']['name']);
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $old_lecture4);
+        }
+        if ($_FILES['lecture5']['name'] != ''){
+            move_uploaded_file($_FILES['lecture5']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $_FILES['lecture5']['name']);
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $old_lecture5);
+        }
+        if ($_FILES['lecture6']['name'] != ''){
+            move_uploaded_file($_FILES['lecture6']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $_FILES['lecture6']['name']);
+            unlink("C:\wamp64\www\Learning\admin\course_resourses\lectures\\" . $old_lecture6);
+        }
+
         // echo "<script>alert('Sucessfully inserted the Course details.')</script>";
         $_SESSION['status'] = "Sucessfully updated Course details.";
         $_SESSION['status_code'] = "success";

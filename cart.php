@@ -154,7 +154,7 @@
                                     
                                             <div class="row border border-2 px-2 mb-4">
                                                 <div class="col-2 image-container pt-4 p-0 px-1" style="max-width: 8rem;">
-                                                    <img src="./admin/course_resourses/<?php echo $course_img; ?>" class="img-fluid" alt="..." style="width: 640px; height: 4rem;">
+                                                    <img src="./admin/course_resourses/thumbnail/<?php echo $course_img; ?>" class="img-fluid" alt="..." style="width: 640px; height: 4rem;">
                                                 </div>
                                                 <div class="col-6 p-0">
                                                         <a class="text-dark m-0 " href="course_details.php?course_id=<?php echo $course_id; ?>&course_title=<?php echo $course_title; ?>">

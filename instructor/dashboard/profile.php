@@ -80,7 +80,7 @@
                                     <form action="" class="profile-form" id="profile-form" method="post" enctype='multipart/form-data'>
                                         <div class="position-relative pt-1 image-upload">
                                             <!-- <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1" style="width: 200px; height: 200px; background: #DC5F00;"> -->
-                                            <img src="<?php $profile_img !== null ? print '../../admin/course_resourses/' . $profile_img : print '../../assets/img/profile.png' ?>" alt="Admin" class="rounded-circle p-1" style="width: 200px; height: 200px; background: #DD5353; object-fit: cover;">
+                                            <img src="<?php $profile_img !== null ? print '../../admin/course_resourses/profile_img/instructor/' . $profile_img : print '../../assets/img/profile.png' ?>" alt="Admin" class="rounded-circle p-1" style="width: 200px; height: 200px; background: #DD5353; object-fit: cover;">
                                             <!-- <button type='file' name="img" class="btn p-0">    -->
                                             <div class="profile-round">
                                                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($instructor_id); ?>">
@@ -223,7 +223,7 @@
                 $newImageName .= '.' . $imageExtension;
                 $query = "UPDATE instructor SET profile_img = '$newImageName' WHERE id = $instructor_id";
                 mysqli_query($conn, $query);
-                move_uploaded_file($tmpName, '../../admin/course_resourses/' . $newImageName);
+                move_uploaded_file($tmpName, '../../admin/course_resourses/profile_img/instructor/' . $newImageName);
                 echo
                 "
                 <script>

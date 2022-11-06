@@ -23,20 +23,7 @@ $course = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Courses</title>
-        
-          <!-- Custom css file -->
-   <link rel="stylesheet" href="../../assets/style.css">
-
-    <!-- ==================Link bootstrap ================== -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-
-    <!-- =================bootstrap icons================== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- =========== font awesome =========== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
+    <?php include('./links.inc.php'); ?>
 </head>
 <body class="body-pd">
 
@@ -48,37 +35,41 @@ $course = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
     
-    <div class="container" style="z-index: 0;">
+    <div class="container manage-course" style="z-index: 0;">
         <div class="row my-4">
             <div class="col-md-12">
                 <h2 class="">Manage Your Courses</h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row p-0 d-flex flex-row">
 
             <?php if($result): ?>
                 <?php  if(mysqli_num_rows($result) > 0): ?>
                     <?php foreach($course as $row): ?>
 
-                        <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="col-sm-6 col-md-4 col-xl-3 mx-0 mb-4 p-0">
                             
-                            <a href="../course_details.php?course_id=<?php echo htmlspecialchars($row['course_id']); ?>&course_title=<?php echo htmlspecialchars($row['title']); ?>" class="text-dark">
-                                <div class="card pb-4" style="width: 18rem; height: 15rem;">
-                                    <img src="<?php $row['thumbnail'] != null ? print '../course_resourses/'. $row['thumbnail'] : print '../../assets/img/unchecked.png' ?>" class="card-img-top" alt="...">
+                            <a href="../../course_details.php?course_id=<?php echo htmlspecialchars($row['course_id']); ?>&course_title=<?php echo htmlspecialchars($row['title']); ?>" class="text-dark">
+                                <div class="card pb-4">
+                                    <img src="<?php $row['thumbnail'] != null ? print '../course_resourses/thumbnail/'. $row['thumbnail'] : print '../../assets/img/unchecked.png' ?>" class="card-img-top" alt="...">
                                     <div class="card-body p-2">
                                         <p class="card-text title fs- fw-bold pt-1 lh-sm w-100" style="font-size: .9rem;"><?php echo htmlspecialchars($row['title']); ?></p>
-                                         <p class="card-text author fs-6 fw-normal pt-1 lh-sm" style="width: 90%"><?php echo htmlspecialchars($row['author']); ?></p>
-                                        <!-- <p class="card-text rating fw-light pt-1" style="width: 90%"><?php //echo htmlspecialchars($row['rating']); ?> <span>rating</span></p>
-                                        <p class="card-text price fw-bold pt-1" style="width: 90%">₹<?php //echo htmlspecialchars($row['price']); ?></p> -->
+                                        <p class="card-text author fs-6 fw-normal pt-1 lh-sm" style="width: 90%"><?php echo htmlspecialchars($row['author']); ?></p>
+                                        <!-- <p class="card-text rating fw-light pt-1" style="width: 90%"><?php //echo htmlspecialchars($row['rating']); ?> <span>rating</span></p> -->
+                                        <p class="card-text price fw-bold pt-1" style="width: 90%">₹<?php echo htmlspecialchars($row['price']); ?></p>
                                     </div>
-                                    <div class="row d-flex align-items-end">
+                                    <div class="row d-flex align-items-end flex-row">
                                         <!-- edit courses -->
                                         <div class="col-6 text-start">
-                                            <a class="btn" href="./edit_course.php?edit=<?php echo htmlspecialchars($row['course_id']); ?>" role="button"><i class="fa-regular fa-pen-to-square text-dark"></i></a>
+                                            <a class="btn" href="./edit_course.php?edit=<?php echo htmlspecialchars($row['course_id']); ?>" role="button">
+                                                <i class="fa-regular fa-pen-to-square text-dark"></i>
+                                            </a>
                                         </div>
                                         <!-- Delete courses -->
                                         <div class="col-6 text-end">
-                                            <a class="btn" href="delete_course?deleted=<?php echo htmlspecialchars($row['course_id']); ?>" role="button"><i class="fa-regular fa-trash-can text-dark"></i></i></i></a>
+                                            <a class="btn" href="delete_course?deleted=<?php echo htmlspecialchars($row['course_id']); ?>" role="button">
+                                                <i class="fa-regular fa-trash-can text-dark"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -98,6 +89,7 @@ $course = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     </div>
     
+    <?php include('./footer.inc.php'); ?> 
 
 </body>
 </html>
