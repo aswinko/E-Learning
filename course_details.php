@@ -6,7 +6,14 @@
 
 
     if (isset($_GET['course_id'])){
-
+        
+        //get user id from user table
+        $user = $_SESSION['user'];
+        $get_user = "SELECT * FROM `user` WHERE username = '$user'";
+        $result_get_user = mysqli_query($conn ,$get_user);
+        $run_query = mysqli_fetch_array($result_get_user);
+        $user_id = $run_query['id'];
+        
         $id = mysqli_real_escape_string($conn, $_GET['course_id']);
 
         //fetch result in array format
@@ -18,6 +25,25 @@
         //close connection
         // mysqli_close($conn);
 
+        //check purchased courses or not
+        $check_purchase_course_query = "SELECT * FROM purchased_courses WHERE user_id = '$user_id'";
+        $purchase_res = mysqli_query($conn, $check_purchase_course_query);
+        $purchase_course = mysqli_fetch_all($purchase_res, MYSQLI_ASSOC);
+        // $purchased_course_id = $purchased_courses['course_id'];
+        $check_course = mysqli_num_rows($purchase_res);
+        $confirm_purchased_course = 0;
+        foreach($purchase_course as $purchased_course){
+            $purchased_course_id = $purchased_course['course_id'];
+            if($purchased_course_id == $id){
+                $confirm_purchased_course = $id;
+            }
+        }
+
+    //    while ($purchased_courses = mysqli_fetch_array($purchase_res)){
+    //         $purchased_course_id = $purchased_courses['course_id'];
+    //         // echo $purchased_course_id;
+    //    }
+
         //call instructor details function 
         $instructor_information = instructor_details($instructor_email);
         $instruct_details = mysqli_fetch_assoc($instructor_information);
@@ -28,6 +54,7 @@
 
     //call cart function
     cart($course_id);
+
 
 
 
@@ -65,16 +92,18 @@
                         <div class="row d-flex flex-wrap">
                             <div class="col-md-8 p-1 p-md-2">
                                 <div  class="thumbnail" style="max-width: 42rem;">
-                                    <!-- <?php //if($course_status == 'completed'): ?>
-                                        <video id="vid" class="vid" width="100%" controls>
-                                            <source id="lec-1" src="./admin/course_resourses/<?php //echo htmlspecialchars($course['lecture1']); ?>">
-                                        </video>
-                                    <?php //else: ?>
-                                            <img class="w-100" src="./admin/course_resourses/thumbnail/<?php //echo htmlspecialchars($course['thumbnail']); ?>" alt="..." style="height: 26.4rem; ">
-                                    <?php //endif; ?> -->
-                                    <video id="vid" class="vid" width="100%" controls>
-                                        <source id="lec-1" src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">
-                                    </video>
+
+                                            <?php if($confirm_purchased_course == $id): ?>
+                                                <video id="vid" class="vid" width="100%" controls>
+                                                    <source id="lec-1" src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">
+                                                </video>
+                                            <?php else: ?>
+                                                    <img class="w-100" src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="..." style="height: 26.4rem; ">
+                                            <?php endif; ?>
+
+                                    <!-- <video id="vid" class="vid" width="100%" controls>
+                                        <source id="lec-1" src="./admin/course_resourses/lectures/<?php //echo htmlspecialchars($course['lecture1']); ?>">
+                                    </video> -->
                                     <!-- cart button -->
                                     <div class="mt-3 d-flex justify-content-md-end justify-content-between">
                                         <a name="add_to_cart" href="?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&add_to_cart=<?php echo htmlspecialchars($course['course_id']); ?>" 

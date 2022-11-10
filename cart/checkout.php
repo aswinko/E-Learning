@@ -90,17 +90,22 @@ if(isset($_SESSION['user']) && $_SESSION['user'] == true ){
                 $update_orders = "UPDATE `user_orders` SET order_status = 'complete' WHERE order_id = $order_id";
                 $result_update = mysqli_query($conn, $update_orders);
 
-                //checking course purchase
-                // $update_course_status = "UPDATE `courses` SET status = 'completed' WHERE course_id = $course_id";
-                // $result_update_status = mysqli_query($conn, $update_course_status);
-                // if($result_update_status)
 
-                // for($i=0; $i < $total_courses; $i++){
-                //     $insert_purchased_course = "INSERT INTO `purchased_courses` (order_id, course_id, user_id) 
-                //     VALUES ($order_id, $course_id, $user_id)";
-    
-                //     $result_purchase = mysqli_query($conn, $insert_purchased_course);
-                // }
+                $cart_query = "SELECT * FROM cart_details WHERE ip_address = '$get_ip_add' AND user_name = '$user'";
+                $result = mysqli_query($conn, $cart_query);
+                while ($row = mysqli_fetch_array($result)){
+                    $course_id = $row['course_id'];
+
+                    /*the lines are to be insert order id and purchased courses id and 
+                    corresponding userid in purchased_courses table */
+                    $sq = "INSERT INTO purchased_courses (order_id, course_id, user_id, purchase_status) VALUES ($order_id, $course_id, $user_id, 'success')";
+                    $sq_res = mysqli_query($conn, $sq);
+                    if($sq_res){
+                        // echo "success";
+                    }else {
+                        echo mysqli_error($conn);
+                    }
+                }
 
 
                 if($result_update) {

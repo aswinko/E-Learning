@@ -50,27 +50,13 @@
                     $array_course_values = array_sum($price_table);
                     $total_price += $array_course_values;
                 } 
-                // $row = mysqli_fetch_array($result);
-                // $total_courses_id = explode(',', $course_id);
-                // echo $total_courses_id;
-                // echo ",";
-                // echo print_r(array($row['course_id']));
-
             } 
-        
-            //getting quantity from cart
-            // $get_cart = "SELECT * FROM cart_details";
-            // $run_cart = mysqli_query($conn, $get_cart);
-            // $get_item_quantity = mysqli_fetch_array($run_cart);
-            // $quantity = $get_item_quantity['quantity'];
-            // if ($quantity == 0) {
-            //     $quantity = 1;
-            // }
         
             // insert into users orders
             $insert_orders = "INSERT INTO user_orders (user_id, amount_due, invoice, total_courses, 
-            order_status, order_date) VALUES ($user_id, $total_price, $invoice_number, $count_course, '$status', NOW())";
+            order_status, order_date) VALUES ($user_id, $total_price, $invoice_number, $count_course, '$status', NOW() )";
             $insert_result = mysqli_query($conn, $insert_orders);
+
             if ($insert_result) {
                 // echo "<script>alert('orders are submitted successfully')</script>";
                 // $_SESSION['status'] = "Order placed successfully";
@@ -89,11 +75,6 @@
                 $_SESSION['status'] = "Something went wrong!";
                 $_SESSION['status_code'] = "error";
             }
-
-            //orders pending
-            // $insert_pending_orders = "INSERT INTO orders_pending (user_id, amount_due, invoice, total_courses, 
-            // order_status, order_date) VALUES ($user_id, $total_price, $invoice_number, $count_course, '$status', NOW())";
-            // $insert_result = mysqli_query($conn, $insert_orders);
 
         }
     }
