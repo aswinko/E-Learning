@@ -22,7 +22,12 @@ if(isset($_POST['submit'])){
      <?php include('./links.inc.php'); ?>
 </head>
 <body>
-    <?php include('./sidebar.php'); ?>
+    <?php //include('./sidebar.php'); ?>
+    <div class="container-fluid shadow-sm">
+        <ul class="m-0 p-3">
+            <li class="text-end"><a href="javascript:history.go(-1)"><i class="fa-solid fa-xmark text-dark fs-2 fw-bold"></i></a></li>
+        </ul>
+    </div>
     <div class="container d-flex justify-content-center mt-5">
         <div class="row border shadow-sm p-5">
             <h2>Insert Category</h2>

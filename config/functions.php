@@ -20,7 +20,7 @@ function show_category()
 {
     global $conn;
 
-    $select_category_query = 'SELECT category_id, category_name FROM category';
+    $select_category_query = 'SELECT category_id, category_name, category_icon FROM category';
     $result_category = mysqli_query($conn, $select_category_query);
 
     return $result_category;
@@ -331,22 +331,7 @@ function update_courses(
         if($_FILES['thumbnail']['name'] != ''){
             //image upload
             move_uploaded_file($_FILES['thumbnail']['tmp_name'], "C:\wamp64\www\Learning\admin\course_resourses\\thumbnail\\" . $_FILES['thumbnail']['name']);
-
-            // move_uploaded_file($temp_lecture1, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture1);
-            // move_uploaded_file($temp_lecture2, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture2);
-            // move_uploaded_file($temp_lecture3, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture3);
-            // move_uploaded_file($temp_lecture4, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture4);
-            // move_uploaded_file($temp_lecture5, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture5);
-            // move_uploaded_file($temp_lecture6, "C:\wamp64\www\Learning\admin\course_resourses\\" . $lecture6);
-            
             unlink("C:\wamp64\www\Learning\admin\course_resourses\\thumbnail\\" . $old_thumbnail);
-
-            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture1);
-            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture2);
-            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture3);
-            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture4);
-            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture5);
-            // unlink("C:\wamp64\www\Learning\admin\course_resourses\\" . $old_lecture6);
 
         }
 
@@ -389,6 +374,14 @@ function update_courses(
     return $result_query;
 }
 
+function update_category($category_name, $category_icon, $category_id){
+    global $conn;
+
+    $update_category = "UPDATE `category` SET category_name='$category_name', category_icon= '$category_icon' WHERE category_id='$category_id'";
+    $result_query = mysqli_query($conn, $update_category);
+
+    return $result_query;
+}
 
 
 function login($username, $password) {

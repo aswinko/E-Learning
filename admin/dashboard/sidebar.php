@@ -17,6 +17,12 @@
                 </a>
             </li>
             <li>
+                <a href="./manage_courses.php" class="mt-1 <?= $active_path == "manage_courses.php" ? 'active-sidebar-user' : '' ?>">
+                    <span class="icon"><i class="fa-solid fa-tv"></i></span>
+                    <span class="text">Manage Course</span>
+                </a>
+            </li>
+            <li>
                 <a href="./manage_instructor.php" class="mt-1 <?= $active_path == "manage_instructor.php" ? 'active-sidebar-user' : '' ?>">
                     <span class="icon"><i class="fa-solid fa-chalkboard-user"></i></span>
                     <span class="text">Manage Instructor</span>
@@ -29,17 +35,12 @@
                 </a>
             </li>
             <li>
-                <a href="./insert_category.php" class="mt-1 <?= $active_path == "insert_category.php" ? 'active-sidebar-user' : '' ?>">
+                <a href="./manage_category.php" class="mt-1 <?= $active_path == "manage_category.php" ? 'active-sidebar-user' : '' ?>">
                     <span class="icon"><i class="fa-solid fa-sitemap"></i></span>
                     <span class="text">Manage Category</span>
                 </a>
             </li>
-            <li>
-                <a href="./manage_courses.php" class="mt-1 <?= $active_path == "manage_courses.php" ? 'active-sidebar-user' : '' ?>">
-                    <span class="icon"><i class="fa-solid fa-tv"></i></span>
-                    <span class="text">Manage Course</span>
-                </a>
-            </li>
+            
             <li>
                 <a href="./settings" class="mt-1 <?= $active_path == "settings.php" ? 'active-sidebar-user' : '' ?>">
                     <span class="icon"><i class="fa-solid fa-gear"></i></span>
