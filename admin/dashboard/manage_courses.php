@@ -82,10 +82,6 @@ $course = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <?php else: ?>
                 <h2 class="ms-md-5 ms-1 fs-2 fw-normal">You have no courses! <a href="./create_course.php" class="btn rounded-0" role="button" style="background-color: #DD5353;">Create now</a></h2>
             <?php endif; ?>
-
-
-
-
         </div>
     </div>
     

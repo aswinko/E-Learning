@@ -40,7 +40,12 @@
                     <span class="text">Manage Category</span>
                 </a>
             </li>
-            
+            <li>
+                <a href="./manage_orders.php" class="mt-1 <?= $active_path == "manage_orders.php" ? 'active-sidebar-user' : '' ?>">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <span class="text">Manage Orders</span>
+                </a>
+            </li>
             <li>
                 <a href="./settings" class="mt-1 <?= $active_path == "settings.php" ? 'active-sidebar-user' : '' ?>">
                     <span class="icon"><i class="fa-solid fa-gear"></i></span>
