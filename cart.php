@@ -142,8 +142,7 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title m-0 p-0 lh-sm mb-1"><?php echo $course_title; ?></h5>
                                                                 <p class="card-text m-0 p-0 fw-normal lh-md" style="font-size: .74rem !important;"><?php echo $course_desc; ?></p>
-                                                                <p class="card-text fw-semibold m-0 p-0" style="font-size: .8rem !important;"><?php echo $course_author; ?></p>
-                                                                <p class="card-text m-0 p-0 text-muted" style="font-size: .8rem !important;"><small class="text-muted"><?php echo $course_rating; ?>⭐<span>rating</span></small></p>
+                                                                <p class="card-text fw-semibold m-0 p-0" style="font-size: .8rem !important;"><?php echo ucwords($course_author); ?></p>
                                                             </div>
                                                         </a>
                                                     </div>

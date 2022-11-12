@@ -41,10 +41,10 @@ mysqli_close($conn);
         <main class="container all_courses" style="background: #fff;">
             <?php if($courses): ?>
                 <div class="row pt-4">
-                    <!-- <div class="col-6"> 
-                        <h4 class="fw-bold">All Courses</h4>
-                    </div> -->
-                    <div class="col-12 d-flex justify-content-end">
+                    <div class="col-6"> 
+                        <h4 class="fw-bold text-muted">Search result for "<?php echo htmlspecialchars($search_data); ?>"</h4>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
                         <p class="text-muted fw-bold fs-5 text-end"><?php echo htmlspecialchars($row_count); ?> results</p>
                     </div>
 
@@ -52,15 +52,15 @@ mysqli_close($conn);
                 <?php foreach($courses as $course): ?>
                     <div class="row pt-2">
                         <div class="col-4 image-container" style="max-width: 18rem;">
-                            <img src="./admin/course_resourses/<?php echo htmlspecialchars($course['thumbnail']); ?>" class="img-fluid rounded-start" alt="..." style="width: 640px; height: 9rem;">
+                            <img src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" class="img-fluid rounded-start" alt="..." style="width: 640px; height: 9rem;">
                         </div>
                         <div class="col-8">
                             <div class="card-body">
                                 <a class="text-dark" href="course_details.php?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&course_title=<?php echo htmlspecialchars($course['title']); ?>">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($course['title']); ?></h5>
-                                    <p class="card-text"><?php echo htmlspecialchars($course['description']); ?></p>
-                                    <p class="card-text"><?php echo htmlspecialchars($course['author']); ?></p>
-                                    <p class="card-text"><small class="text-muted"><?php echo htmlspecialchars($course['rating']); ?> ⭐ <span>rating</span></small></p>
+                                    <h5 class="card-title" style="margin: 2px 0px !important;"><?php echo htmlspecialchars($course['title']); ?></h5>
+                                    <p class="card-text my-0" style="margin: 2px 0px !important;"><?php echo htmlspecialchars($course['description']); ?></p>
+                                    <p class="card-text text-muted my-0" style="margin: 2px 0px !important;"><?php echo htmlspecialchars($course['author']); ?></p>
+                                    <p class="card-text fs-5 fw-bold my-0" style="margin: 2px 0px !important;">₹ <?php echo htmlspecialchars($course['price']); ?></p>
                                 </a>
                             </div>
                         </div>

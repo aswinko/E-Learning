@@ -39,6 +39,17 @@
             }
         }
 
+        $check_course_in_cart_query = "SELECT * FROM cart_details WHERE user_name = '$user'";
+        $cart_res = mysqli_query($conn, $check_course_in_cart_query);
+        $cart_row = mysqli_fetch_all($cart_res, MYSQLI_ASSOC);
+        $cart_course = 0;
+        foreach($cart_row as $in_cart){
+            $cart_course_id = $in_cart['course_id'];
+            if($cart_course_id == $id){
+                $cart_course = $id;
+            }
+        }
+
     //    while ($purchased_courses = mysqli_fetch_array($purchase_res)){
     //         $purchased_course_id = $purchased_courses['course_id'];
     //         // echo $purchased_course_id;
@@ -65,6 +76,9 @@
     <!DOCTYPE html>
     <html lang="en">
         <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Course details</title>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <?php include('./inc/links.inc.php'); ?>
@@ -82,7 +96,7 @@
                                     <h2 class="title fw-bold d-flex justify-content-left mb-sm-4"><?php echo htmlspecialchars($course['title']); ?></h2>
                                     <p class="description fw-normal mb-2 d-flex flex-wrap"><?php echo htmlspecialchars($course['description']); ?></p>
                                     <p class="author fw-light mb-2"><?php echo htmlspecialchars($course['author']); ?></p>
-                                    <!-- <p class="rating fw-light mb-1">(<?php //echo htmlspecialchars($course['rating']); ?>) <sup>⭐</sup> <span>rating</span></p> -->
+                                    <p class="rating fw-light mb-1 fs-5">₹ <?php echo htmlspecialchars($course['price']); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -91,58 +105,73 @@
                     <div class="container-md container-fluid mt-md-5 mt-4 p-md-4">
                         <div class="row d-flex flex-wrap">
                             <div class="col-md-8 p-1 p-md-2">
-                                <div  class="thumbnail" style="max-width: 42rem;">
+                                <div class="thumbnail" style="max-width: 42rem;">
 
-                                            <?php if($confirm_purchased_course == $id): ?>
-                                                <video id="vid" class="vid" width="100%" controls>
-                                                    <source id="lec-1" src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">
-                                                </video>
-                                            <?php else: ?>
-                                                    <img class="w-100" src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="..." style="height: 26.4rem; ">
+                                    <?php if($confirm_purchased_course == $id): ?>
+                                        <video id="vid" class="vid" width="100%" controls>
+                                            <source id="lec-1" src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">
+                                        </video>
+                                    <?php else: ?>
+                                            <img class="w-100" src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="..." style="height: 26.4rem; ">
+                                    <?php endif; ?>
+
+                                    <div class="row mt-3 d-flex flex-row">
+                                        <div class="col-6">
+                                            <?php if($confirm_purchased_course != $id): ?>
+                                                <p class="rating text-start fw-bold mb-1 fs-2">₹ <?php echo htmlspecialchars($course['price']); ?></p> 
                                             <?php endif; ?>
-
-                                    <!-- <video id="vid" class="vid" width="100%" controls>
-                                        <source id="lec-1" src="./admin/course_resourses/lectures/<?php //echo htmlspecialchars($course['lecture1']); ?>">
-                                    </video> -->
-                                    <!-- cart button -->
-                                    <div class="mt-3 d-flex justify-content-md-end justify-content-between">
-                                        <a name="add_to_cart" href="?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&add_to_cart=<?php echo htmlspecialchars($course['course_id']); ?>" 
-                                            class="btn btn-primary fs-6 " style="background: #071E3D; padding: .8rem 5rem;">Add to cart</a>
+                                        </div>
+                                        <div class="col-6 d-flex justify-content-end ">
+                                            <!-- check courses in cart or not. if courses in cart then display go to cart btn otherwise add to cart btn -->
+                                            <?php if($cart_course == $id): ?>
+                                                <a href="./cart.php" class="cart_btn btn btn-dark fs-6 ">Go to cart</a>
+                                            <?php else: ?>
+                                                <!-- if courses not purchase then display add to cart button -->
+                                                <?php if($confirm_purchased_course != $id): ?>
+                                                    <a name="add_to_cart" href="?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&add_to_cart=<?php echo htmlspecialchars($course['course_id']); ?>" 
+                                                        class="cart_btn btn btn-primary fs-6">Add to cart</a>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
                                         <!-- <a role="button" href="#" class="btn btn-primary fs-6 mx-4 py-2 px-4" style="background: #071E3D;">Buy now</a> -->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4 video-contents">
-                                <div class="row border shadow mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;" >
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button id="btn-lec1" class="px-5 btn  w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">Lecture 1</button>
+                                <?php if($confirm_purchased_course == $id): ?>
+                                    <div class="row border shadow mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;" >
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button id="btn-lec1" class="px-5 btn  w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">Lecture 1</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button id="btn_lec2" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture2']); ?>">Lecture 2</button>
+                                    <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button id="btn_lec2" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture2']); ?>">Lecture 2</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button id="btn_lec3" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture3']); ?>">Lecture 3</button>
+                                    <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button id="btn_lec3" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture3']); ?>">Lecture 3</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button id="btn_lec4" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture4']); ?>">Lecture 4</button>
+                                    <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button id="btn_lec4" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture4']); ?>">Lecture 4</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button id="btn_lec5" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture5']); ?>">Lecture 5</button>
+                                    <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button id="btn_lec5" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture5']); ?>">Lecture 5</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button id="btn_lec6" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture6']); ?>">Lecture 6</button>
+                                    <div class="row shadow border mb-4 d-flex justify-content-center" style="background: #071E3D; height: 60px; border-radius: 20px;">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button id="btn_lec6" class="px-5 btn w-100 text-white" data-src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture6']); ?>">Lecture 6</button>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php else: ?>
+                                    <!-- <p>Advertise Here</p> -->
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -155,7 +184,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="fw-normal"><?php echo htmlspecialchars($course['title']); ?></p>
+                                <p class="fw-normal fs-4"><?php echo htmlspecialchars($course['title']); ?></p>
                             </div>
                         </div>
                     </div>

@@ -22,10 +22,10 @@ session_start();
   <!-- //hero section -->
   <main class="container-fluid p-0 instructor">
     <div class="card text-bg-dark d-flex">
-        <img style="height: 600px !important;" src="https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-96634.jpg?w=1380&t=st=1664383862~exp=1664384462~hmac=2f9b88bde43b4bd5b8d1d155a71c219011c26e1609abb9a80ccc62c5bcd92587" class="card-img" alt="...">
+        <img src="https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-96634.jpg?w=1380&t=st=1664383862~exp=1664384462~hmac=2f9b88bde43b4bd5b8d1d155a71c219011c26e1609abb9a80ccc62c5bcd92587" class="card-img" alt="...">
         <div class="card-img-overlay">
             <h5 class="card-title fs-1 fw-bold">Come Teach with Us</h5>
-            <p class="card-text fs-5 w-25">Become an instructor and change lives — including your own</p>
+            <p class="desc card-text fs-5 w-25">Become an instructor and change lives — including your own</p>
             <a class="btn btn-dark py-2 px-4 fw-bold" href="./login.php" role="button">Get Started</a>
         </div>
     </div>
@@ -39,18 +39,18 @@ session_start();
     <div class="row ">
       <div class="col-md-4 ">
         <div class="">
-          <img class="img-fluid " src="../assets/icons/abc.png" alt="image..">
+          <img class="img-fluid icon" src="../assets/icons/abc.png" alt="image..">
           <h4 class="fs-5 fw-bold">Teach your way</h4>
           <p class="mx-5 fs-6 lh-base">Publish the course you want, in the way you want, and always have control of your own content.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <img class="img-fluid" src="../assets/icons/book.png" alt="image..">
+        <img class="img-fluid icon" src="../assets/icons/book.png" alt="image..">
         <h4 class="fs-5 fw-bold">Inspire learners</h4>
         <p class="mx-5 fs-6 lh-base">Teach what you know and help learners explore their interests, gain new skills, and advance their careers.</p>
       </div>
       <div class="col-md-4">
-        <img class="img-fluid" src="../assets/icons/best-seller.png" alt="image..">
+        <img class="img-fluid icon" src="../assets/icons/best-seller.png" alt="image..">
         <h4 class="fs-5 fw-bold">Get rewarded</h4>
         <p class="mx-5 fs-6 lh-base">Expand your professional network, build your expertise, and earn money on each paid enrollment.</p>
       </div>
@@ -82,11 +82,11 @@ session_start();
 </div>
 
 <!-- instructor remember section -->
-<div class="container-fluid" style="background-color: #EEEEEE;">
+<div class="container-fluid instructor-remember" style="background-color: #EEEEEE;">
   <div class="container text-center my-5 py-4">
     <div class="row">
       <div class="col-12">
-        <h5 class="fs-1 fw-bold p-1">Become an instructor today</h5>
+        <h5 class="fs-1 fw-bold p-1 instruct-heading">Become an instructor today</h5>
         <p class="fs-4 fw-normal" style="width: 40%; margin: 1.5rem auto 2.4rem;">Join one of the world’s largest online learning marketplaces.</p>
         <a class="btn btn-dark py-2 px-5 rounded-0 fw-bold fs-6" href="./login.php" role="button">Get Started</a>
       </div>

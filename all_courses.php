@@ -49,7 +49,7 @@ mysqli_close($conn);
                                 <a class="text-dark m-0" href="course_details.php?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&course_title=<?php echo htmlspecialchars($course['title']); ?>">
                                     <h5 class="card-title m-0 p-0"><?php echo htmlspecialchars($course['title']); ?></h5>
                                     <p class="card-text m-0 p-0"><?php echo htmlspecialchars($course['description']); ?></p>
-                                    <p class="card-text m-0 p-0"><?php echo htmlspecialchars($course['author']); ?></p>
+                                    <p class="card-text m-0 p-0 text-muted"><?php echo htmlspecialchars(ucwords($course['author'])); ?></p>
                                     <!-- <p class="card-text p-0 m-0"><small class="text-muted"><?php //echo htmlspecialchars($course['rating']); ?> ⭐ <span>rating</span></small></p> -->
                                     <p class="card-text price fw-bold m-0 p-0">₹<?php echo htmlspecialchars($course['price']); ?></p>
                                 </a>

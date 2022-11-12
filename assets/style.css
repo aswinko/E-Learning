@@ -246,12 +246,19 @@ img {
   }
 }
 
+/* =================================Carousel section ends============================== */
+
+/* =================================course details section starts============================== */
+.course_details .thumbnail .cart_btn {
+  background: #071E3D; 
+  padding: .8rem 4rem;
+}
 @media (max-width: 992px) {
-  .thumbnail {
+  .course_details .thumbnail {
     max-width: 28rem !important;
     /* height: 100%;   */
   }
-  .thumbnail img {
+  .course_details .thumbnail img {
     /* width: 100% !important; */
     height: 100% !important;
   }
@@ -263,19 +270,19 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .thumbnail {
+  .course_details .thumbnail {
     max-width: 100% !important;
     /* height: 100%;   */
   }
 
-  .row {
+  .course_details .row {
     display: flex;
     flex-direction: column;
   }
   .course_details .col-8 {
     width: 100%;
   }
-  .video-contents {
+  .course_details .video-contents {
     padding: 20px !important;
   }
   .course_details .col-4 {
@@ -283,7 +290,19 @@ img {
   }
 }
 
-/* =================================Carousel section ends============================== */
+@media screen and (max-width: 426px){
+  .course_details .thumbnail .cart_btn {
+    padding: .8rem 3rem;
+  }
+}
+
+@media screen and (max-width: 358px){
+  .course_details .thumbnail .cart_btn {
+    padding: .8rem 1rem;
+  }
+}
+
+
 
 /* ================= Course section ends ======================= */
 
@@ -468,16 +487,62 @@ img {
 
 /* instructor page style */
 
-.card-img-overlay {
+.instructor .card-img-overlay {
   top: 30% !important;
   left: 15% !important;
 }
 
 /* instructor-facility */
-.instructor-facility img {
+.instructor-facility .icon {
   width: 100px !important;
 }
 
+.instructor .card-img {
+  height: 600px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .instructor .card-img-overlay .desc {
+    width: 50% !important;
+  }
+  .instructor .card-img {
+    object-fit: cover !important;
+    height: 400px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .instructor-facility p {
+    font-size: .9rem !important;
+    margin: 1px 2rem !important;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .instructor .card-img-overlay {
+    top: 15% !important;
+    left: 2% !important;
+  }
+  .instructor .card-img-overlay .desc {
+    width: 75% !important;
+    font-size: 1rem !important;
+  }
+  .instructor .card-img-overlay h5, .instructor-remember .instruct-heading  {
+    font-size: 1.2rem !important;
+  }
+
+  .instructor-remember p{
+    width: 100% !important; 
+    font-size: 1rem !important;
+  }
+
+  
+  .instructor .card-img {
+    object-fit: cover !important;
+    height: 250px !important;
+  }
+}
 
 
 

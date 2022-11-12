@@ -38,7 +38,7 @@ $course = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <div class="container manage-course" style="z-index: 0;">
         <div class="row my-4">
             <div class="col-md-12">
-                <h2 class="">Manage Your Courses</h2>
+                <h2 class="">Manage All Courses</h2>
             </div>
         </div>
         <div class="row p-0 d-flex flex-row">

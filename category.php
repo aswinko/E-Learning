@@ -51,10 +51,10 @@
                         <div class="col-8">
                             <div class="card-body">
                                 <a class="text-dark" href="course_details.php?course_id=<?php echo htmlspecialchars($course['course_id']); ?>&course_title=<?php echo htmlspecialchars($course['title']); ?>">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($course['title']); ?></h5>
-                                    <p class="card-text"><?php echo htmlspecialchars($course['description']); ?></p>
-                                    <p class="card-text"><?php echo htmlspecialchars($course['author']); ?></p>
-                                    <p class="card-text"><small class="text-muted"><?php echo htmlspecialchars($course['rating']); ?> ⭐ <span>rating</span></small></p>
+                                    <h5 class="card-title my-0"><?php echo htmlspecialchars($course['title']); ?></h5>
+                                    <p class="card-text my-0" style="margin: 2px 0px !important;"><?php echo htmlspecialchars($course['description']); ?></p>
+                                    <p class="card-text my-0 text-muted" style="margin: 0 !important;"><?php echo htmlspecialchars(ucwords($course['author'])); ?></p>
+                                    <p class="card-text fs-5 my-0" >₹ <?php echo htmlspecialchars($course['price']); ?></p>
                                 </a>
                             </div>
                         </div>
