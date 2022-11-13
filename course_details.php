@@ -108,9 +108,11 @@
                                 <div class="thumbnail" style="max-width: 42rem;">
 
                                     <?php if($confirm_purchased_course == $id): ?>
-                                        <video id="vid" class="vid" width="100%" controls>
-                                            <source id="lec-1" src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">
-                                        </video>
+                                        <div class="video-container d-flex align-items-center justify-content-center">
+                                            <video id="vid" class="vid" poster="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" controls controlsList="nodownload">
+                                                <source id="lec-1" src="./admin/course_resourses/lectures/<?php echo htmlspecialchars($course['lecture1']); ?>">
+                                            </video>
+                                        </div>
                                     <?php else: ?>
                                             <img class="w-100" src="./admin/course_resourses/thumbnail/<?php echo htmlspecialchars($course['thumbnail']); ?>" alt="..." style="height: 26.4rem; ">
                                     <?php endif; ?>
@@ -208,7 +210,7 @@
                                 <p>Instructor</p>
                             </div>
                             <div class="col-md-4 d-flex flex-row">
-                                <img class="instructor-prof-course rounded-circle" src="./admin/course_resourses/profile_img/instructor/<?php echo htmlspecialchars($instruct_details['profile_img']); ?>" alt="..." style="width: 75px; height: 75px; object-fit: cover;">
+                                <img class="instructor-prof-course rounded-circle" src="<?php $instruct_details['profile_img'] != null ? print './admin/course_resourses/profile_img/instructor/' . $instruct_details['profile_img'] : print './assets/img/user.png' ?>" alt="..." style="width: 75px; height: 75px; object-fit: cover;">
                                 <a href="./instructor/instructor_details.php?instructor_id=<?php echo htmlspecialchars($instruct_details['id']); ?>" class=" text-muted">
                                     <p class="fw-bold fs-5 ms-4 mt-3"><?php echo htmlspecialchars($instruct_details['name']); ?></p>
                                     <!-- <p class="fw-bold fs-5 ms-4 mt-2">Hanna Mariya Biju</p> -->

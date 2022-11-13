@@ -38,7 +38,7 @@
 
     <body>
 
-        <main class="container home text-center">
+        <main class="container text-center">
             <div class="row pt-5 d-flex justify-content-center">
                 <!-- <div class="col-4"></div> -->
                 <div class="col-12 border bg-light rounded-3" style="width: 28rem; height: 21rem;">
@@ -72,6 +72,6 @@
         
         <!-- ===========link bootstrap============= -->
         <script src="../assets/js/bootstrap.js" type="text/javascript"></script>
-        <?php include('./footer.inc.php'); ?>
+        <?php //include('./footer.inc.php'); ?>
     </body>
 </html>

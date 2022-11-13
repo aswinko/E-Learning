@@ -1,8 +1,8 @@
-<section style="height: 75vh; " class="instructor-section d-flex align-content-center flex-wrap">
+<section style="height: 75vh; " class="instructor-section d-flex align-content-center flex-wrap mb-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center ps-md-4 md-0">
-                <img class="rounded-1" style="width: 300px; height: 300px;" src="./assets/img/ammu.jpg" alt="Instructor image" />
+                <img class="rounded-1" src="./assets/img/ammu.jpg" alt="Instructor image" />
             </div>
             <div class="col-md-6 lh-sm d-flex align-content-center flex-wrap">
                 <h4 class="fs-2 fw-bold">Become an Instructor</h4>

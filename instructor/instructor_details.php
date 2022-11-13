@@ -40,7 +40,7 @@
         </div>
 
 
-        <main class="container my-4" style="padding: 0 16rem;">
+        <main class="container my-4 mb-5" style="padding: 0 16rem;">
             <?php if($instructor_details): ?>
                 <div class="row text-en">
                     <p class="fw-bold fs-3 text-muted">Instructor</p>
@@ -75,7 +75,6 @@
                                             <div class="card-body p-1">
                                                 <p class="card-text title fs- fw-bold pt-1 lh-sm w-100" style="font-size: .9rem;"><?php echo htmlspecialchars($row['title']); ?></p>
                                                 <p class="card-text author fs-6 fw-normal pt-1 lh-sm" style="width: 90%"><?php echo htmlspecialchars($row['author']); ?></p>
-                                                <p class="card-text rating fw-light pt-1" style="width: 90%"><?php echo htmlspecialchars($row['rating']); ?> <span>rating</span></p>
                                                 <p class="card-text price fw-bold pt-1" style="width: 90%">₹<?php echo htmlspecialchars($row['price']); ?></p>
                                             </div>
                                         </div>

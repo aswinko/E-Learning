@@ -41,7 +41,7 @@
         <?php include('./inc/header.inc.php'); ?>
         
 
-        <main class="container home text-center">
+        <main class="container text-center login">
             <div class="row pt-4 d-flex justify-content-center">
                 <!-- <div class="col-4"></div> -->
                 <div class="col-12 border bg-light rounded-3" style="width: 28rem;">
@@ -68,7 +68,7 @@
                         </div>
                     </form>
                     <div class="mb-4">
-                        <p>Don't have an accout? <a href="signup.php">Signup</a></p>
+                        <p>Don't have an accout? <a href="signup.php" class="to_signup">Signup</a></p>
                     </div>
                 </div>
                 <!-- <div class="col-4"></div>  -->

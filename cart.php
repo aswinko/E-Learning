@@ -93,7 +93,7 @@
         <?php include('./inc/header.inc.php'); ?>
         
 
-        <main class="container " style="background: #fff;">
+        <main class="container cart-section" style="background: #fff;">
             <div class="row pt-4">
                 <h4 class="fw-semibold fs-1 mb-4">Shopping Cart</h4>
                 
@@ -138,7 +138,7 @@
                                                     <img src="./admin/course_resourses/thumbnail/<?php echo $course_img; ?>" class="img-fluid" alt="..." style="width: 640px; height: 4rem;">
                                                 </div>
                                                 <div class="col-6 p-0">
-                                                        <a class="text-dark m-0 " href="course_details.php?course_id=<?php echo $course_id; ?>&course_title=<?php echo $course_title; ?>">
+                                                        <a class="text-dark m-0" href="course_details.php?course_id=<?php echo $course_id; ?>&course_title=<?php echo $course_title; ?>">
                                                             <div class="card-body">
                                                                 <h5 class="card-title m-0 p-0 lh-sm mb-1"><?php echo $course_title; ?></h5>
                                                                 <p class="card-text m-0 p-0 fw-normal lh-md" style="font-size: .74rem !important;"><?php echo $course_desc; ?></p>
@@ -152,10 +152,10 @@
                                                     <form action="" method="post">
                                                         <input name="remove_item" type="submit" value="Remove" class="btn mt-4 text-danger" style="font-size: 1rem;">
                                                     </form>
-                                                    <a href="#" class="btn text-info" style="font-size: .9rem;">Move to whishlist</a>
+                                                    <a href="#" class="btn text-info whishlist-btn" style="font-size: .9rem;">Move to whishlist</a>
                                                 </div>
                                                 <div class="col-2">
-                                                    <p class="m-0 p-0 d-flex justify-content-end mt-4 fs-5"><i class="bi bi-currency-rupee text-info"></i><?php echo $course_price; ?><i class="bi bi-tag-fill text-info ps-1"></i></p>
+                                                    <p class="m-0 p-0 d-flex justify-content-end mt-4 fs-5"><i class="bi bi-currency-rupee text-info currency"></i><?php echo $course_price; ?><i class="bi bi-tag-fill text-info ps-1 price-tag"></i></p>
                                                 </div>
                                             </div>
 
@@ -164,9 +164,9 @@
 
                         <div class="col-3 mt-4 p-0 px-4">
                             <p class="fs-3 d-flex flex-column mt-4 mb-0 pt-1 fw-bold">Order total:</p>
-                            <span class="fs-2 fw-bold d-flex align-items-center mt-0 mb-4"><i class="bi bi-currency-rupee text-dark fs-1 fw-bold mx-0"></i><?php echo $total_price; ?></span>
+                            <span class="fs-2 fw-bold d-flex align-items-center mt-0 mb-4"><i class="bi bi-currency-rupee text-dark fs-1 fw-bold mx-0 currency"></i><?php echo $total_price; ?></span>
                             <form action="" method="post">
-                                <input type="submit" name="checkout" class="btn btn-info rounded-0 text-white fs-5 mt-1" value="Checkout" style="padding: 10px 6rem;">
+                                <input type="submit" name="checkout" class="btn btn-info checkout-btn rounded-0 text-white fs-5 mt-1" value="Checkout" style="padding: 10px 6rem;">
                             </form>
                             <!-- <a href="./cart/checkout.php" class="btn btn-info rounded-0 text-white fs-5 mt-1" style="padding: 10px 6rem;">Checkout</a> -->
                         </div>
@@ -176,7 +176,7 @@
                                 <img src="./assets/icons/search_icon.svg" class="mb-4 img-fluid" alt="" style="width: 400px;">
                                 <p class="fw-normal fs-6 mx-4">Your cart is empty. Keep shopping to find a course!</p>
                                 <div class="col-12 d-flex justify-content-center">
-                                    <a href="index.php" class='btn btn-info d'>Keep Shopping</a>
+                                    <a href="index.php" class='btn btn-info keep-shop-btn text-white'>Keep Shopping</a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                             <img src="./assets/icons/search_icon.svg" class="mb-4 img-fluid" alt="" style="width: 400px;">
                             <p class="fw-normal fs-6 mx-4">Your cart is empty. Keep shopping to find a course!</p>
                             <div class="col-12 d-flex justify-content-center">
-                                <a href="index.php" class='btn btn-info d'>Keep Shopping</a>
+                                <a href="index.php" class='btn btn-info keep-shop-btn text-white'>Keep Shopping</a>
                             </div>
                         </div>
                     </div>

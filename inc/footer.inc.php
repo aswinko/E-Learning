@@ -1,53 +1,47 @@
-<footer class="container-fluid bg-dark text-secondary text-center">  
+<footer class="container-fluid  text-center text-muted" style="background: #222831;">  
   <div class="container">
     <div class="row pt-4">
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <div>
-          <h4>E learning</h4>
+        <div class="">
+          <h4 class="text-light">E learning</h4>
           <ul>
-                <li>
-                  <span>Tech support:</span>
-                  <a href="tel:+91 5678965320">+91 5678965320</a>
-                </li>
-                <li>
-                  <span>Email:</span>
-                  &nbsp;aswinko479@gmail.com
-                </li>
-                <li>
-                  <span>Address:</span>
-                  india
-                </li>
-              </ul>
+            <li>
+              <span>Tech support:</span>
+              <a href="tel:+91 5678965320" class="btn text-muted">+91 5678965320</a>
+            </li>
+            <li>
+              <span>Email:</span>
+              &nbsp;aswinko479@gmail.com
+            </li>
+            <li>
+              <span>Address:</span>
+              india
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
           <div>
-              <h3>Information</h3>
+              <h3 class="text-light">Information</h3>
               <ul class="custom-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="privacy-policy.html">Refund Policy</a></li>
-                <li><a href="terms-conditions.html">Cookie Policy</a></li>
+                <li><a href="about.html" class="btn text-muted">About Us</a></li>
+                <li><a href="terms-conditions.html" class="btn py-0 text-muted">Terms & Conditions</a></li>
+                <li><a href="privacy-policy.html" class="btn py-0 text-muted">Privacy Policy</a></li>
+                <li><a href="privacy-policy.html" class="btn py-0 text-muted">Refund Policy</a></li>
+                <li><a href="terms-conditions.html" class="btn py-0 text-muted">Cookie Policy</a></li>
               </ul>
           </div>
       </div>
-
-      <!-- <div class="col-lg-4 col-md-4 col-sm-12">
-          <div>
-              <h3>Information</h3>
-              <ul class="custom-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="privacy-policy.html">Refund Policy</a></li>
-                <li><a href="terms-conditions.html">Cookie Policy</a></li>
-              </ul>
-          </div>
-      </div> -->
     </div>
   </div>
+  <!-- Copyright -->
+  <div class="container-fluid text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="">Aswin K.O</a>
+  </div>
+  <!-- Copyright -->
 </footer>
+
 
 
 

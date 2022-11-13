@@ -1,41 +1,12 @@
 <?php
   include_once("./config/functions.php");
   include("./config/db_connect.php");
-  // include("./config/db_connect.php");
-  // include("./config/db_connect.php");
-  // require_once(__DIR__."/config/db_connect.php");
 
-  // if(isset($_GET['category_id'])) { 
-      // $select_category_query = "SELECT category_id, category_name FROM category";
-      // $result_category = mysqli_query($conn, $select_category_query); 
-      // $category = mysqli_fetch_all($result_category, MYSQLI_ASSOC);
-
-      //fetch the resulting rows as an array
-      $show_category = show_category();
-      $category = mysqli_fetch_all($show_category, MYSQLI_ASSOC);
-
-      
-      // echo $fetch_profile['profile_img'];
-
-      // mysqli_free_result($insert_category);
-      // mysqli_close($conn);
-  // }
-
-//   if(isset($_GET['category_id'])) {
-//     $category_id = $_GET['category_id']; 
-//     $select_category_query = "SELECT category_id, category_name FROM category";
-//     $result_category = mysqli_query($conn, $select_category_query); 
-//     $category = mysqli_fetch_all($result_category, MYSQLI_ASSOC);
-//     mysqli_free_result($result_category);
-//     mysqli_close($conn);
-// }
+    //fetch the resulting rows as an array
+    $show_category = show_category();
+    $category = mysqli_fetch_all($show_category, MYSQLI_ASSOC);
 
 ?>
-
-
-
-
-
 
 <!-- ============================Nav section starts====================================  -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -113,17 +84,17 @@
               ?>
 
               <li class="nav-item">
-                <div class="dropdown nav-field ">
+                <div class="dropdown nav-field">
                   <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <!-- <i class="bi bi-person-circle text-dark fs-4"></i>  -->
                     <img class="rounded-circle" src="<?php $profile_img !== null ? print './admin/course_resourses/profile_img/user/' . $profile_img : print './assets/img/user.png' ?>" alt="..." style="width: 45px; height: 45px; object-fit: cover;" >
                     Profile
                   </button>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-md-start">
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-md-start shadow">
                     <li><a class="dropdown-item my-2" href="./user_account/profile.php">My Account</a></li>
                     <li><a class="dropdown-item mb-2" href="./user_account/my_courses.php">My Courses</a></li>
                     <li><a class="dropdown-item mb-2" href="./cart.php">My Cart</a></li>
-                    <li class="bg-danger"><a class="dropdown-item bg-danger text-light" href="./user_account/logout.inc.php">Logout</a></li>
+                    <li class="logout-btn"><a class="dropdown-item logout-btn text-light" href="./user_account/logout.inc.php">Logout</a></li>
                     <!-- <li><a class="dropdown-item" href="#">Menu item</a></li> -->
                   </ul>
                 </div>
@@ -133,10 +104,10 @@
 
             <?php else: ?>
                 <li class="nav-item ">
-                  <a href="login.php" class="login btn btn-outline-primary rounded-pill nav-field">Login</a>
+                  <a href="login.php" class="login-btn btn btn-outline-primary rounded-pill nav-field">Login</a>
                 </li>
                 <li class="nav-item ms-2 p-2">
-                  <a href="signup.php" class="signup btn btn-outline-primary rounded-pill nav-field">Signup</a>
+                  <a href="signup.php" class="signup-btn btn btn-outline-primary rounded-pill nav-field">Signup</a>
                 </li>
             <?php endif; ?>
             <li class="nav-item ps-2">
@@ -147,7 +118,7 @@
 
                   
                   <?php if(cart_item() > 0): ?>
-                    <p class="cart-number text-white mb-1 text-center rounded-circle bg-primary text-dark fs-6"><?php echo cart_item(); ?></p>
+                    <p class="cart-number text-white mb-1 text-center rounded-circle text-dark fs-6"><?php echo cart_item(); ?></p>
                   <?php endif; ?>
                   
                 <?php else: ?>

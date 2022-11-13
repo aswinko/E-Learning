@@ -563,7 +563,7 @@ function cart($course_id) {
                 // echo "<script>alert('Item is Successfully added to the cart.')</script>";
                 $_SESSION['status'] = "Item is Successfully added to the cart.";
                 $_SESSION['status_code'] = "success";
-
+                
                 // echo "<script>window.open('?course_id=$course_id', '_self')</script>"; 
             }
             // $name = 'Add to cart';

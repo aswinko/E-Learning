@@ -97,7 +97,7 @@
         <?php include('./inc/header.inc.php'); ?>
         
     
-        <main class="container home text-center">
+        <main class="container text-center signup">
             <div class="row pt-4 d-flex justify-content-center">
                 <!-- <div class="col-4"></div> -->
                 <div class="col-12 border bg-light rounded-3" style="width: 28rem;">
@@ -127,7 +127,7 @@
                         </div>
                     </form>
                     <div class="mb-4">
-                        <p>Already have an account? <a href="login.php">Login</a></p>
+                        <p>Already have an account? <a href="login.php" class="to_login">Login</a></p>
                     </div>
                 </div>
                 <!-- <div class="col-4"></div>  -->

@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #48327d;
+  --secondary-color: #80489C;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -54,7 +59,11 @@ button:focus {
 }
 
 .home {
-  height: 100vh;
+  background: var(--primary-color);
+}
+
+.home a {
+  background: var(--secondary-color) !important;
 }
 
 nav {
@@ -67,10 +76,18 @@ nav {
   align-items: center;
 }
 
-.heading {
+.navbar .heading {
   font-weight: 600;
   font-size: 1.4rem;
-  color: #444444 !important;
+  color: var(--primary-color) !important;
+}
+
+.navbar .logout-btn {
+  background: var(--secondary-color);
+}
+
+.navbar .logout-btn:hover {
+  background: var(--primary-color) !important;
 }
 
 .nav-link {
@@ -92,19 +109,25 @@ nav {
   width: 600px;
   height: 50px;
   border-radius: 50px 1px 1px 50px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid var(--secondary-color);
   outline: none;
+  color: var(--primary-color) !important;
 }
 
 .search-field .form-control:focus {
   box-shadow: none;
+  border-color: var(--primary-color); 
+}
+
+.search-field .form-control::placeholder{
+  color: var(--secondary-color);
 }
 
 .search-field .search-btn {
   border-radius: 1px 30px 30px 1px;
   float: left;
   width: 10%;
-  background: #1c6dd0;
+  background: var(--secondary-color);
   color: white;
   font-size: 17px;
   border: none;
@@ -141,14 +164,51 @@ i {
 }
 
 /* ================== login and signup =================== */
-.login, .signup {
-  border: 1px #1c6dd0 solid !important;
+.login-btn, .signup-btn {
+  border: 1px var(--secondary-color) solid !important;
 }
 
-.login:hover,
-.signup:hover {
+.login-btn:hover,
+.signup-btn:hover {
   color: #fff !important;
+  background: var(--secondary-color) !important;
 }
+
+
+/* cart number */
+.cart-number {
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  /* padding-left: 10px; */
+  right: 10px;
+  padding-bottom: 10px;
+  width: 21px !important;
+  height: 21px !important;
+  background: var(--secondary-color);
+}
+
+/* ================= Login and signup section starts ======================= */
+.login .card-title h2, .signup .card-title h2 {
+  color: var(--secondary-color);
+}
+
+.login button, .signup button {
+  background: var(--secondary-color);
+}
+.login button:hover, .signup button:hover {
+  background: var(--primary-color);
+}
+
+.login .to_signup, .signup .to_login {
+  color: var(--secondary-color);
+}
+
+/* ================= Login and signup section ends ======================= */
+
+
+
+
 
 /* ================= Course section starts ======================= */
 
@@ -166,6 +226,11 @@ i {
 }
 
 /* =================================Carousel section starts============================== */
+
+
+.course .container {
+  border-color: #7743DB !important;
+}
 
 .carousel {
   /* background: #EEE; */
@@ -253,10 +318,26 @@ img {
   background: #071E3D; 
   padding: .8rem 4rem;
 }
+.course_details .thumbnail .video-container {
+  width: 600px;
+  max-width: 100%;
+  height: 400px;
+  border-radius: 2px;
+  background-color: #000;
+}
+.course_details .thumbnail .video-container video {
+  /* max-width: 100%; */
+  width: 100%;
+}
+
 @media (max-width: 992px) {
   .course_details .thumbnail {
     max-width: 28rem !important;
     /* height: 100%;   */
+  }
+  .course_details .thumbnail .video-container {
+    width: 600px;
+    height: 300px;
   }
   .course_details .thumbnail img {
     /* width: 100% !important; */
@@ -274,7 +355,6 @@ img {
     max-width: 100% !important;
     /* height: 100%;   */
   }
-
   .course_details .row {
     display: flex;
     flex-direction: column;
@@ -293,6 +373,9 @@ img {
 @media screen and (max-width: 426px){
   .course_details .thumbnail .cart_btn {
     padding: .8rem 3rem;
+  }
+  .course_details .thumbnail .video-container {
+    height: 250px;
   }
 }
 
@@ -402,6 +485,53 @@ img {
 
 /* ================================= categories section ends ================================== */
 
+
+
+/* ================================= instructor-section  starts ================================== */
+.instructor-section a {
+  background: var(--primary-color);
+  border-radius: 2px !important;
+}
+
+.instructor-section img {
+  width: 300px; 
+  height: 300px;
+  /* object-fit: contain; */
+}
+
+@media screen and (max-width: 768px) {
+  .instructor-section p {
+    width: 100% !important;
+  }
+  .instructor-section img {
+    width: 200px; 
+    height: 200px; 
+  }
+}
+/* ================================= instructor-section ends ================================== */
+
+
+
+/* ================================= cart-section ends ================================== */
+.cart-section .whishlist-btn, .cart-section .price-tag, .cart-section .currency {
+  color: var(--secondary-color) !important;
+}
+
+.cart-section .checkout-btn, .cart-section .keep-shop-btn {
+  background: var(--secondary-color);
+} 
+
+.cart-section .checkout-btn:hover, .cart-section .keep-shop-btn:hover {
+  background: var(--primary-color);
+}
+
+
+/* ================================= cart-section ends ================================== */
+
+
+
+
+
 @media screen and (max-width: 992px) {
   .dropdown {
     padding-left: 100px !important;
@@ -471,17 +601,6 @@ img {
   }
 }
 
-/* cart number */
-.cart-number {
-  position: absolute;
-  top: 10px;
-  text-align: center;
-  /* padding-left: 10px; */
-  right: 10px;
-  padding-bottom: 10px;
-  width: 21px !important;
-  height: 21px !important;
-}
 
 
 

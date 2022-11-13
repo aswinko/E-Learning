@@ -18,7 +18,7 @@
         
         <?php include('./inc/header.inc.php'); ?>
         
-        <section class="home bg-primary text-light h-100 pb-4" style="height: 600px;">
+        <section class="home text-light h-100 pb-4">
         <div class="container">
 
             <div class="row align-items-center pt-4 mt-4">
@@ -30,11 +30,11 @@
                     cupiditate adipisci, ipsam architecto facilis porro a possimus alias
                     delectus.
                     </p>
-                    <a href="login.php" class="btn btn-danger">Get started</a>
+                    <a href="login.php" class="btn btn-danger shadow">Get started</a>
                 </div>
                 <div class="col-lg-6 col-md-12 py-4 mt-4 mb-4 ">
                     
-                    <img src="assets/icons/stud1.svg" class="w-auto h-100 align-items-center justify-content-center "/>
+                    <img src="assets/icons/stud1.svg" class="w-auto h-100 align-items-center justify-content-center"/>
                 </div>
             </div>
         </section>
