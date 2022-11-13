@@ -407,7 +407,7 @@ function login($username, $password) {
         }
 }
 
-function signup($username, $password, $email, $phone) {
+function signup($username, $password, $email, $phone, $fullname) {
 
     global $conn;
 
@@ -421,8 +421,8 @@ function signup($username, $password, $email, $phone) {
                 $_SESSION['status_code'] = "warning";
             }else {
 
-                $sql = "INSERT INTO user(username, password, email, phone) 
-                VALUES ('$username', '$password', '$email', '$phone')";
+                $sql = "INSERT INTO user(username, password, email, phone, fullname) 
+                VALUES ('$username', '$password', '$email', '$phone', '$fullname')";
 
                 $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     

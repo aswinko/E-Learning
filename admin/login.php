@@ -33,7 +33,7 @@
         <!-- ==================Link bootstrap ================== -->
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
 
-        <?php include('./links.inc.php'); ?>
+        <?php include('./dashboard/links.inc.php'); ?>
     </head>
 
     <body>
@@ -72,6 +72,6 @@
         
         <!-- ===========link bootstrap============= -->
         <script src="../assets/js/bootstrap.js" type="text/javascript"></script>
-        <?php //include('./footer.inc.php'); ?>
+        <?php include('./dashboard/footer.inc.php'); ?>
     </body>
 </html>

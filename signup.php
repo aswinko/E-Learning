@@ -9,8 +9,8 @@
         header("Location: index.php"); 
     }else {
 
-        $username = $password = $email = $phone = '';
-        $errors = array('username' => '', 'password' => '', 'email' => '', 'phone' => '')  ;
+        $username = $password = $email = $phone = $fullname = '';
+        $errors = array('username' => '', 'password' => '', 'email' => '', 'phone' => '', 'fullname' => '')  ;
     
         if (isset($_POST['signup'])){
     
@@ -22,6 +22,16 @@
                     $errors['username'] = 'Username must be letters and numbers only.';
                 }
             }
+
+            if(empty($_POST['fullname'])){
+                $errors['fullname'] = 'Fullname is required.';
+            }else {
+                $fullname = $_POST['fullname'];
+                if(!preg_match('/^[a-zA-Z\s]+$/', $fullname)){
+                    $errors['fullname'] = 'Fullname must be letters.';
+                }
+            }
+    
     
             if(empty($_POST['password'])){
                 $errors['password'] = 'Password is required.';
@@ -54,11 +64,12 @@
     
             }else {
                 $username = mysqli_real_escape_string($conn, $_POST['username']);
+                $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
                 $password = mysqli_real_escape_string($conn, $_POST['password']);
                 $email = mysqli_real_escape_string($conn, $_POST['email']);
                 
                 //signup function call
-                signup($username, $password, $email, $phone);
+                signup($username, $password, $email, $phone, $fullname);
             }
     
     
@@ -97,7 +108,7 @@
         <?php include('./inc/header.inc.php'); ?>
         
     
-        <main class="container text-center signup">
+        <main class="container text-center signup mb-5">
             <div class="row pt-4 d-flex justify-content-center">
                 <!-- <div class="col-4"></div> -->
                 <div class="col-12 border bg-light rounded-3" style="width: 28rem;">
@@ -105,6 +116,11 @@
                         <h2>Signup</h2>
                     </div>
                     <form action="signup.php" method="POST">
+                    <div class="mb-4">
+                            <input type="text" class="form-control" name="fullname" id="fullname" value="<?php echo htmlspecialchars($fullname); ?>" placeholder="Fullname">
+                            <!-- <label for="name">Username</label> -->
+                            <div class="text-danger"><?php echo $errors['fullname']; ?></div>
+                        </div>
                         <div class="mb-4">
                             <input type="text" class="form-control" name="username" id="name" value="<?php echo htmlspecialchars($username); ?>" placeholder="Username">
                             <!-- <label for="name">Username</label> -->
