@@ -30,7 +30,7 @@
                     cupiditate adipisci, ipsam architecto facilis porro a possimus alias
                     delectus.
                     </p>
-                    <a href="login.php" class="btn btn-danger shadow">Get started</a>
+                    <a href="./login.php" class="btn btn-danger shadow">Get started</a>
                 </div>
                 <div class="col-lg-6 col-md-12 py-4 mt-4 mb-4 ">
                     
@@ -51,6 +51,9 @@
         <?php include('./inc/instructor.inc.php'); ?>
         <!-- ===============Instructor section ends============= -->
 
+        <!-- ===============contact section starts=========== -->
+        <?php include('./inc/contact.inc.php'); ?>
+        <!-- ===============contact section ends============= -->
         
         
         <?php include('./inc/footer.inc.php'); ?>

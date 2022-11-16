@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-6 lh-sm d-flex align-content-center flex-wrap">
                 <h4 class="fs-2 fw-bold">Become an Instructor</h4>
-                <p class="fs-6 w-75 fst-normal">Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.</p>
+                <p class="fs-6 w-75 fst-normal">Instructors from around the world teach millions of students. We provide the tools and skills to teach what you love.</p>
                 <a class="btn btn-dark rounded-0 fs-6 fw-bold py-2" href="./instructor/index.php" target="_blank" role="button">Start teaching today</a>
             </div>
         </div>

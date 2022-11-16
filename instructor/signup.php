@@ -81,7 +81,7 @@
         <?php include('./header.inc.php'); ?>
         
     
-        <main class="container home text-center">
+        <main class="container text-center">
             <div class="row pt-4 d-flex justify-content-center">
                 <!-- <div class="col-4"></div> -->
                 <div class="col-12 border bg-light rounded-3" style="width: 28rem;">
